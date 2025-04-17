@@ -350,8 +350,8 @@ namespace Sanicball.Logic
             //Increment the race timer if it's been started
             if (raceTimerOn)
             {
-                raceTimer += Time.deltaTime;
-                foreach (var p in players) p.UpdateTimer(Time.deltaTime);
+                raceTimer += (1.0f / 60.0f);
+                foreach (var p in players) p.UpdateTimer((1.0f / 60.0f));
             }
 
             //Order player list by position

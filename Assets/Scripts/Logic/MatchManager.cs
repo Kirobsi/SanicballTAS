@@ -407,7 +407,7 @@ namespace Sanicball.Logic
 
             if (lobbyTimerOn && inLobby)
             {
-                lobbyTimer -= Time.deltaTime;
+                lobbyTimer -= (1.0f / 20.0f);
                 LobbyReferences.Active.CountdownField.text = "Match starts in " + Mathf.Max(1f, Mathf.Ceil(lobbyTimer));
 
                 //LoadRaceMessages don't need to be sent in online mode - the server will ignore it anyway.
@@ -419,12 +419,12 @@ namespace Sanicball.Logic
 
             if (autoStartTimerOn && inLobby)
             {
-                autoStartTimer = Mathf.Max(0, autoStartTimer - Time.deltaTime);
+                autoStartTimer = Mathf.Max(0, autoStartTimer - (1.0f / 60.0f));
             }
 
             if (OnlineMode)
             {
-                netUpdateTimer -= Time.deltaTime;
+                netUpdateTimer -= (1.0f / 60.0f);
 
                 if (netUpdateTimer <= 0)
                 {

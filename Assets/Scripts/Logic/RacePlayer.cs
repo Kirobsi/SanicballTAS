@@ -315,7 +315,7 @@ namespace Sanicball.Logic
             //This is also a good time to decrement the timeout timer if it's above 0
             if (timeout > 0)
             {
-                timeout = Mathf.Max(0, timeout - Time.deltaTime);
+                timeout = Mathf.Max(0, timeout - (1.0f / 60.0f));
             }
         }
 

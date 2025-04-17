@@ -37,7 +37,7 @@ namespace Sanicball.Logic
         private void Awake()
         {
             Active = this;
-            CameraFade.StartAlphaFade(Color.black, true, 1f);
+            CameraFade.StartAlphaFade(Color.black, true, 0.2f);
         }
     }
 }
