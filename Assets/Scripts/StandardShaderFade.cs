@@ -32,7 +32,7 @@ namespace Sanicball
         {
             if (curTime < targetTime)
             {
-                curTime = Mathf.Min(curTime + Time.deltaTime, targetTime);
+                curTime = Mathf.Min(curTime + (1.0f / 60.0f), targetTime);
                 GetComponent<Renderer>().material.SetColor("_Color", new Color(1f, 1f, 1f, fadeOut ? (1 - curTime / targetTime) : (curTime / targetTime)));
             }
         }

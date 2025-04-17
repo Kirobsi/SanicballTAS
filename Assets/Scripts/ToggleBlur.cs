@@ -27,7 +27,7 @@ namespace Sanicball
         {
             if (isOn && t < 1)
             {
-                t = Mathf.Lerp(t, 1, speed * Time.deltaTime);
+                t = Mathf.Lerp(t, 1, speed * (1.0f / 60.0f));
             }
             if (!isOn && t > 0)
             {

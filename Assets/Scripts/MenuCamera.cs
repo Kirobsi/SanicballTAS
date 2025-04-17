@@ -28,7 +28,7 @@ namespace Sanicball
             float dist = Vector3.Distance(transform.position, paths[currentPath].endPoint.position);
 
             //Movement
-            transform.position = Vector3.MoveTowards(transform.position, paths[currentPath].endPoint.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, paths[currentPath].endPoint.position, moveSpeed * (1.0f / 60.0f));
 
             //Calculate time before hitting end point
             float timeToChange = dist / moveSpeed;
@@ -43,7 +43,7 @@ namespace Sanicball
             //Change path and begin fading out when fadein is done
             if (changePathTimer > 0f)
             {
-                changePathTimer -= Time.deltaTime;
+                changePathTimer -= (1.0f / 60.0f);
                 if (changePathTimer <= 0f)
                 {
                     ChangePath();

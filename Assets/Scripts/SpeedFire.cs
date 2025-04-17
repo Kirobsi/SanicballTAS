@@ -34,7 +34,7 @@ namespace Sanicball {
 			float power = Mathf.InverseLerp(120, 500, rb.velocity.magnitude);
 			power = power * power;
 
-			rot += Time.deltaTime * 1000;
+			rot += (1.0f / 60.0f) * 1000;
 			transform.position = ball.transform.position;
 			Vector3 look = rb.velocity;
 			if (look == Vector3.zero)

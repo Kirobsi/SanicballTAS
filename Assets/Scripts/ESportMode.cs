@@ -79,7 +79,7 @@ namespace Sanicball {
 
 			if (timerOn)
 			{
-				timer -= Time.deltaTime;
+				timer -= (1.0f / 60.0f);
 
 				bass = timer < 0.2f && timer > 0.02f;
 				if (timer <= 0)
@@ -90,13 +90,13 @@ namespace Sanicball {
 			}
 			if (screenOverlayEnabled)
 			{
-				snoopPos = Vector2.MoveTowards(snoopPos, snoopTarget, Time.deltaTime * 32);
+				snoopPos = Vector2.MoveTowards(snoopPos, snoopTarget, (1.0f / 60.0f) * 32);
 				if (snoopPos == snoopTarget)
 				{
 					snoopTarget = new Vector2(Random.Range(0,Screen.width), Random.Range(0,Screen.height));
 				}
 
-				colorTimer -= Time.deltaTime;
+				colorTimer -= (1.0f / 60.0f);
 				if (colorTimer <= 0)
 				{
 					currentColor = new Color(Random.Range(0f,1f), Random.Range(0f,1f), Random.Range(0f,1f), 0.2f);
@@ -122,7 +122,7 @@ namespace Sanicball {
 					}
 					else
 					{
-						c.fieldOfView = Mathf.Lerp(c.fieldOfView, 72 + fov, Time.deltaTime * 20);
+						c.fieldOfView = Mathf.Lerp(c.fieldOfView, 72 + fov, (1.0f / 60.0f) * 20);
 					}
 				}
 			}

@@ -105,7 +105,7 @@ namespace Sanicball
         {
             if (fadeIn && aSource.volume < 0.5f)
             {
-                aSource.volume = Mathf.Min(aSource.volume + Time.deltaTime * 0.1f, 0.5f);
+                aSource.volume = Mathf.Min(aSource.volume + (1.0f / 60.0f) * 0.1f, 0.5f);
             }
             //If it's not playing but supposed to play, change song
             if ((!aSource.isPlaying || GameInput.IsChangingSong()) && isPlaying)
@@ -125,26 +125,26 @@ namespace Sanicball
             //Timer
             if (timer > 0)
             {
-                timer -= Time.deltaTime;
+                timer -= (1.0f / 60.0f);
             }
 
             if (fastMode && fastSource.volume < 1)
             {
-                fastSource.volume = Mathf.Min(1, fastSource.volume + Time.deltaTime * 0.25f);
+                fastSource.volume = Mathf.Min(1, fastSource.volume + (1.0f / 60.0f) * 0.25f);
                 aSource.volume = 0.5f - fastSource.volume / 2;
             }
             if (!fastMode && fastSource.volume > 0)
             {
-                fastSource.volume = Mathf.Max(0, fastSource.volume - Time.deltaTime * 0.5f);
+                fastSource.volume = Mathf.Max(0, fastSource.volume - (1.0f / 60.0f) * 0.5f);
                 aSource.volume = 0.5f - fastSource.volume / 2;
             }
             if (timer > 0)
             {
-                slidePosition = Mathf.Lerp(slidePosition, 0, Time.deltaTime * 4);
+                slidePosition = Mathf.Lerp(slidePosition, 0, (1.0f / 60.0f) * 4);
             }
             else
             {
-                slidePosition = Mathf.Lerp(slidePosition, slidePositionMax, Time.deltaTime * 2);
+                slidePosition = Mathf.Lerp(slidePosition, slidePositionMax, (1.0f / 60.0f) * 2);
             }
         }
 

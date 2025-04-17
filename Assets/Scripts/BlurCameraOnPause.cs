@@ -40,7 +40,7 @@ namespace Sanicball
             {
                 if (blur.blurSize < targetBlurSize)
                 {
-                    blur.blurSize = Mathf.Min(blur.blurSize + Time.unscaledDeltaTime * 40, targetBlurSize);
+                    blur.blurSize = Mathf.Min(blur.blurSize + (1.0f / 60.0f) * 40, targetBlurSize);
                 }
 
                 if (!UI.PauseMenu.GamePaused)

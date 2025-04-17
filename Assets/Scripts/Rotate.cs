@@ -14,7 +14,7 @@ namespace Sanicball
         // Update is called once per frame
         private void Update()
         {
-            transform.Rotate(angle * Time.deltaTime * 10);
+            transform.Rotate(angle * (1.0f / 60.0f) * 10);
         }
     }
 }

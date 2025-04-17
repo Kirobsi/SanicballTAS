@@ -28,7 +28,7 @@ namespace Sanicball
         // Update is called once per frame
         private void Update()
         {
-            timer -= Time.deltaTime;
+            timer -= (1.0f / 60.0f);
 
             if (timer <= 0)
             {
@@ -40,11 +40,11 @@ namespace Sanicball
                 timer = switchTime;
             }
 
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * moveSpeed * (1.0f / 60.0f));
 
             if (vol < 1f)
             {
-                vol = Mathf.Min(1f, vol + Time.deltaTime / 4);
+                vol = Mathf.Min(1f, vol + (1.0f / 60.0f) / 4);
                 AudioListener.volume = Mathf.Lerp(0, Data.ActiveData.GameSettings.soundVolume, vol);
             }
         }

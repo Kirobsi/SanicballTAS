@@ -15,6 +15,7 @@ namespace Sanicball
         public int colNumber = 0; //Zero Indexed
         public int totalCells = 4;
         public int fps = 10;
+		private static int frameCounterPriv = 0;
 
         //Maybe this should be a private var
         private Vector2 offset;
@@ -41,13 +42,14 @@ namespace Sanicball
         private void Update()
         {
             SetSpriteAnimation(colCount, rowCount, rowNumber, colNumber, totalCells, fps);
+			++frameCounterPriv;
         }
 
         //SetSpriteAnimation
         private void SetSpriteAnimation(int colCount, int rowCount, int rowNumber, int colNumber, int totalCells, int fps)
         {
             // Calculate index
-            int index = (int)(Time.time * fps);
+            int index = (int)((frameCounterPriv / 60) * fps);
             // Repeat when exhausting all cells
             index = index % totalCells;
 

@@ -24,7 +24,7 @@ namespace Sanicball
         {
             if (resized)
             {
-                pos = Mathf.Min(1f, pos + Time.deltaTime / time);
+                pos = Mathf.Min(1f, pos + (1.0f / 60.0f) / time);
 
                 var smoothedPos = Mathf.SmoothStep(0f, 1f, pos);
                 var targetWidth = menuWidth * canvas.scaleFactor;

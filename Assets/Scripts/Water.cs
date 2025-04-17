@@ -13,6 +13,8 @@ namespace Sanicball
         public float noiseOffsetY = 0f;
         public float triangleSize = 1f;
         public int triangleCount = 64;
+		
+		private static int frameCounterPriv = 0;
 
         public int noiseIterations = 2;
 
@@ -42,8 +44,9 @@ namespace Sanicball
         // Update is called once per frame
         private void Update()
         {
-            t += Time.deltaTime * 10f;
-            t = Time.time * speed;
+            t += (1.0f / 60.0f) * 10f;
+			++frameCounterPriv;
+            t = (frameCounterPriv / 60) * speed;
 
             points = new float[triangleCount, triangleCount];
             for (var x = 0; x < points.GetLength(0); x++)
