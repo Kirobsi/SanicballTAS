@@ -58,7 +58,7 @@ namespace Sanicball.UI
         {
             if (Vector3.Distance(stageLayoutCamera.transform.position, targetStageCamPos) > 0.1f)
             {
-                stageLayoutCamera.transform.position = Vector3.Lerp(stageLayoutCamera.transform.position, targetStageCamPos, Time.deltaTime * 10f);
+                stageLayoutCamera.transform.position = Vector3.Lerp(stageLayoutCamera.transform.position, targetStageCamPos, (1.0f / 60.0f) * 10f);
                 if (Vector3.Distance(stageLayoutCamera.transform.position, targetStageCamPos) <= 0.1f)
                 {
                     stageLayoutCamera.transform.position = targetStageCamPos;

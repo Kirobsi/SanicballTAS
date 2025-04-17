@@ -26,12 +26,12 @@ namespace Sanicball.UI
 		void Update () {
 			if (showTimer > 0)
 			{
-				panel.alpha = Mathf.Lerp(panel.alpha, 1, Time.deltaTime * 20);
-				showTimer -= Time.deltaTime;
+				panel.alpha = Mathf.Lerp(panel.alpha, 1, (1.0f / 60.0f) * 20);
+				showTimer -= (1.0f / 60.0f);
 			}
 			else
 			{
-				panel.alpha = Mathf.Lerp(panel.alpha, 0, Time.deltaTime * 20);
+				panel.alpha = Mathf.Lerp(panel.alpha, 0, (1.0f / 60.0f) * 20);
 			}
 		}
 

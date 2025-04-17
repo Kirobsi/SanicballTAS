@@ -14,16 +14,16 @@ namespace Sanicball.UI
         {
             if (timer > 0f)
             {
-                timer -= Time.deltaTime;
+                timer -= (1.0f / 60.0f);
             }
             else {
                 if (spin == 0f) spin = 0.01f;
                 if (spin < 1000000f)
                 {
-                    spin += Time.deltaTime * spin;
+                    spin += (1.0f / 60.0f) * spin;
                 }
             }
-            transform.Rotate(0f, 0f, spin * Time.deltaTime);
+            transform.Rotate(0f, 0f, spin * (1.0f / 60.0f));
 
             if (Input.anyKeyDown)
             {

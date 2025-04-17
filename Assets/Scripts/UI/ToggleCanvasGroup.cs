@@ -64,7 +64,7 @@ namespace Sanicball.UI
         {
             if (hidden && cg.alpha > 0f)
             {
-                cg.alpha = Mathf.Max(cg.alpha - Time.deltaTime / time, 0f);
+                cg.alpha = Mathf.Max(cg.alpha - (1.0f / 60.0f) / time, 0f);
                 if (cg.alpha <= 0f)
                 {
                     gameObject.SetActive(false);
@@ -72,12 +72,12 @@ namespace Sanicball.UI
             }
             if (!hidden && cg.alpha < 1f)
             {
-                cg.alpha = Mathf.Min(cg.alpha + Time.deltaTime / time, 1f);
+                cg.alpha = Mathf.Min(cg.alpha + (1.0f / 60.0f) / time, 1f);
             }
 
             if (hideTimer > 0f)
             {
-                hideTimer -= Time.deltaTime;
+                hideTimer -= (1.0f / 60.0f);
                 if (hideTimer <= 0)
                 {
                     Hide();

@@ -51,11 +51,11 @@ namespace Sanicball.UI
         {
             if (isOpen && pos < 1f)
             {
-                pos = Mathf.Min(1, pos + Time.deltaTime / time);
+                pos = Mathf.Min(1, pos + (1.0f / 60.0f) / time);
             }
             if (!isOpen && pos > 0f)
             {
-                pos = Mathf.Max(0, pos - Time.deltaTime / time);
+                pos = Mathf.Max(0, pos - (1.0f / 60.0f) / time);
                 if (pos <= 0f)
                 {
                     cg.alpha = 0f;

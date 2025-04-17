@@ -134,13 +134,13 @@ namespace Sanicball.UI
 
             if (!Mathf.Approximately(entryContainer.anchoredPosition.x, targetX))
             {
-                float x = Mathf.Lerp(entryContainer.anchoredPosition.x, targetX, scrollSpeed * Time.deltaTime);
+                float x = Mathf.Lerp(entryContainer.anchoredPosition.x, targetX, scrollSpeed * (1.0f / 60.0f));
                 entryContainer.anchoredPosition = new Vector2(x, entryContainer.anchoredPosition.y);
             }
 
             if (!Mathf.Approximately(entryContainer.anchoredPosition.y, targetY))
             {
-                float y = Mathf.Lerp(entryContainer.anchoredPosition.y, targetY, scrollSpeed * Time.deltaTime);
+                float y = Mathf.Lerp(entryContainer.anchoredPosition.y, targetY, scrollSpeed * (1.0f / 60.0f));
                 entryContainer.anchoredPosition = new Vector2(entryContainer.anchoredPosition.x, y);
             }
 
@@ -153,7 +153,7 @@ namespace Sanicball.UI
 
                 if (!Mathf.Approximately(element.Size, targetSize))
                 {
-                    element.Size = Mathf.Lerp(element.Size, targetSize, scrollSpeed * Time.deltaTime);
+                    element.Size = Mathf.Lerp(element.Size, targetSize, scrollSpeed * (1.0f / 60.0f));
                 }
             }
         }

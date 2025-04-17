@@ -34,7 +34,7 @@ namespace Sanicball.UI
 
             if (fadingOut)
             {
-                a -= Time.deltaTime / fadeTime;
+                a -= (1.0f / 60.0f) / fadeTime;
                 t.color = new Color(1, 1, 1, a);
                 if (a <= 0)
                 {
@@ -46,12 +46,12 @@ namespace Sanicball.UI
             }
             else if (a < 1)
             {
-                a += Time.deltaTime / fadeTime;
+                a += (1.0f / 60.0f) / fadeTime;
                 t.color = new Color(1, 1, 1, a);
             }
             else
             {
-                timer -= Time.deltaTime;
+                timer -= (1.0f / 60.0f);
                 if (timer < 0 && lines.Length > 1)
                 {
                     fadingOut = true;

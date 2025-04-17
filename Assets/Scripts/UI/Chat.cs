@@ -75,12 +75,12 @@ namespace Sanicball.UI
 
             if (visibleTime > 0)
             {
-                visibleTime -= Time.deltaTime;
+                visibleTime -= (1.0f / 60.0f);
                 canvasGroup.alpha = 1;
             }
             else if (canvasGroup.alpha > 0)
             {
-                canvasGroup.alpha = Mathf.Max(canvasGroup.alpha - Time.deltaTime / FADE_TIME, 0);
+                canvasGroup.alpha = Mathf.Max(canvasGroup.alpha - (1.0f / 60.0f) / FADE_TIME, 0);
             }
         }
 

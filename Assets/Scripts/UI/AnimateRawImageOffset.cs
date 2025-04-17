@@ -18,7 +18,7 @@ namespace Sanicball.UI
 
         private void Update()
         {
-            offset += new Vector2(speed.x * Time.deltaTime, speed.y * Time.deltaTime);
+            offset += new Vector2(speed.x * (1.0f / 60.0f), speed.y * (1.0f / 60.0f));
             if (offset.x >= 1)
             {
                 offset += new Vector2(-1, 0);

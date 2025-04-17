@@ -26,7 +26,7 @@ namespace Sanicball.UI
         // Update is called once per frame
         private void Update()
         {
-            timer -= Time.deltaTime;
+            timer -= (1.0f / 60.0f);
 
             if (timer <= 0)
             {

@@ -31,7 +31,7 @@ namespace Sanicball.UI
             {
                 if (fade < 1)
                 {
-                    fade += Time.deltaTime / fadeTime;
+                    fade += (1.0f / 60.0f) / fadeTime;
                     image.color = Color.Lerp(baseColor, targetColor, fade);
                 }
             }
@@ -39,7 +39,7 @@ namespace Sanicball.UI
             {
                 if (fade > 0)
                 {
-                    fade -= Time.deltaTime / fadeTime;
+                    fade -= (1.0f / 60.0f) / fadeTime;
                     image.color = Color.Lerp(baseColor, targetColor, fade);
                 }
             }

@@ -27,7 +27,7 @@ namespace Sanicball.UI
                 ActiveData.GameSettings.showControlsWhileWaiting = !ActiveData.GameSettings.showControlsWhileWaiting;
             }
 
-            controlsPanel.alpha = Mathf.Lerp(controlsPanel.alpha, ActiveData.GameSettings.showControlsWhileWaiting ? 1 : 0, Time.deltaTime * 20);
+            controlsPanel.alpha = Mathf.Lerp(controlsPanel.alpha, ActiveData.GameSettings.showControlsWhileWaiting ? 1 : 0, (1.0f / 60.0f) * 20);
         }
 
         public string StageNameToShow

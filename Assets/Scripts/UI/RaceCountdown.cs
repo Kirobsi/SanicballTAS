@@ -39,7 +39,7 @@ namespace Sanicball.UI
 
         private void Update()
         {
-            timer -= Time.deltaTime;
+            timer -= 1.0f / 20.0f;
             if (timer <= 0)
             {
                 string countdownText = "";
@@ -90,7 +90,7 @@ namespace Sanicball.UI
                 if (countdown == 1) timer = 2f;
             }
 
-            currentFontSize = Mathf.Lerp(currentFontSize, targetFontSize, Time.deltaTime * 10);
+            currentFontSize = Mathf.Lerp(currentFontSize, targetFontSize, (1.0f / 60.0f) * 10);
             countdownLabel.fontSize = (int)currentFontSize;
         }
     }

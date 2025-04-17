@@ -58,8 +58,8 @@ namespace Sanicball.UI
             float targetWidth = selected ? baseWidth * selectedScale : baseWidth * deselectedScale;
             float targetHeight = selected ? baseHeight * selectedScale : baseHeight * deselectedScale;
 
-            le.preferredWidth = Mathf.Lerp(le.preferredWidth, targetWidth, Time.deltaTime * animationSpeed);
-            le.preferredHeight = Mathf.Lerp(le.preferredHeight, targetHeight, Time.deltaTime * animationSpeed);
+            le.preferredWidth = Mathf.Lerp(le.preferredWidth, targetWidth, (1.0f / 60.0f) * animationSpeed);
+            le.preferredHeight = Mathf.Lerp(le.preferredHeight, targetHeight, (1.0f / 60.0f) * animationSpeed);
         }
 
         private void Activate()

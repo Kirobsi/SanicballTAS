@@ -25,7 +25,7 @@ namespace Sanicball.UI
         {
             if (isHoldingImage)
             {
-                holdImageTimer -= Time.deltaTime;
+                holdImageTimer -= (1.0f / 60.0f);
                 if (holdImageTimer <= 0)
                 {
                     isHoldingImage = false; //Stop the timer
@@ -38,7 +38,7 @@ namespace Sanicball.UI
                 if (isFadeOut)
                 {
                     float a = images[curImg].color.a;
-                    a -= fadeTime * Time.deltaTime;
+                    a -= fadeTime * (1.0f / 60.0f);
                     images[curImg].color = new Color(1f, 1f, 1f, a);
                     if (a <= 0f)
                     {
@@ -49,7 +49,7 @@ namespace Sanicball.UI
                 else
                 {
                     float a = images[curImg].color.a;
-                    a += fadeTime * Time.deltaTime;
+                    a += fadeTime * (1.0f / 60.0f);
                     images[curImg].color = new Color(1f, 1f, 1f, a);
                     if (a >= 1f)
                     {

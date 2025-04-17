@@ -58,7 +58,7 @@ namespace Sanicball.UI
 
             float y = trans.anchoredPosition.y;
 
-            y = Mathf.Lerp(y, -(targetPosition - 1) * spacing, Time.deltaTime * 10);
+            y = Mathf.Lerp(y, -(targetPosition - 1) * spacing, (1.0f / 60.0f) * 10);
 
             trans.anchoredPosition = new Vector2(trans.anchoredPosition.x, y);
         }

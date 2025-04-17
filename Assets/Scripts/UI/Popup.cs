@@ -41,12 +41,12 @@ namespace Sanicball.UI
         {
             if (!closing && alpha < 1f)
             {
-                alpha = Mathf.Min(alpha + Time.deltaTime / fadeTime, 1f);
+                alpha = Mathf.Min(alpha + (1.0f / 60.0f) / fadeTime, 1f);
                 cg.alpha = alpha;
             }
             if (closing && alpha > 0f)
             {
-                alpha = Mathf.Max(alpha - Time.deltaTime / fadeTime, 0f);
+                alpha = Mathf.Max(alpha - (1.0f / 60.0f) / fadeTime, 0f);
                 cg.alpha = alpha;
                 if (alpha <= 0f)
                 {
