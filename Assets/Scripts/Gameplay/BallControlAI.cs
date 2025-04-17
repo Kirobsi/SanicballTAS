@@ -89,7 +89,7 @@ namespace Sanicball.Gameplay
 
             if (ball.CanMove)
             {
-                autoRespawnTimer -= Time.deltaTime;
+                autoRespawnTimer -= (1.0f / 60.0f);
                 if (autoRespawnTimer <= 0)
                 {
                     ball.RequestRespawn();
@@ -97,9 +97,9 @@ namespace Sanicball.Gameplay
                 }
             }
 
-            targetPointOffsetCurrent = Vector3.Lerp(targetPointOffsetCurrent, targetPointOffsetGoal, Time.deltaTime);
+            targetPointOffsetCurrent = Vector3.Lerp(targetPointOffsetCurrent, targetPointOffsetGoal, 1.0f / 60.0f);
 
-            targetPointOffsetChangeTimer -= Time.deltaTime;
+            targetPointOffsetChangeTimer -= (1.0f / 60.0f);
             if (targetPointOffsetChangeTimer <= 0)
             {
                 targetPointOffsetChangeTimer += TARGET_OFFSET_CHANGE_TIME;

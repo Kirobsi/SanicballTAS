@@ -38,7 +38,7 @@ namespace Sanicball.Gameplay
         private void Update()
         {
             //Animate the panel on the boost pad
-            offset -= 5f * Time.deltaTime;
+            offset -= 5f * (1.0f / 60.0f);
             if (offset <= 0f)
             {
                 offset += 1f;

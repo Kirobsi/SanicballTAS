@@ -23,7 +23,7 @@ namespace Sanicball.Gameplay
 
         //From smoothmouselook
         [SerializeField]
-        private int smoothing = 2;
+        private int smoothing = 1;
         [SerializeField]
         public int yMin = -85;
         [SerializeField]
@@ -93,23 +93,14 @@ namespace Sanicball.Gameplay
             //Keyboard controls
             var cameraVector = GameInput.CameraVector(CtrlType);
 
-            /*if (cameraVector.x < 0)
-                xtargetRotation -= 20 * sensitivityKeyboard * Time.deltaTime;
-            if (cameraVector.x > 0)
-                xtargetRotation += 20 * sensitivityKeyboard * Time.deltaTime;
-            if (cameraVector.y > 0)
-                ytargetRotation -= 20 * sensitivityKeyboard * Time.deltaTime;
-            if (cameraVector.y < 0)
-                ytargetRotation += 20 * sensitivityKeyboard * Time.deltaTime;*/
-
-            xtargetRotation += cameraVector.x * 20 * sensitivityKeyboard * Time.deltaTime;
-            ytargetRotation -= cameraVector.y * 20 * sensitivityKeyboard * Time.deltaTime;
+            xtargetRotation += cameraVector.x * 20 * sensitivityKeyboard * (1.0f / 60.0f);
+            ytargetRotation -= cameraVector.y * 20 * sensitivityKeyboard * (1.0f / 60.0f);
 
             ytargetRotation = Mathf.Clamp(ytargetRotation, yMin, yMax);
             xtargetRotation = xtargetRotation % 360;
             ytargetRotation = ytargetRotation % 360;
 
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, xtargetRotation, ytargetRotation), Time.deltaTime * 10 / smoothing);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, xtargetRotation, ytargetRotation), 1.0f / 3.0f / smoothing); //Static time interval * 20 for TAS
         }
 
         private void LateUpdate()
@@ -122,7 +113,7 @@ namespace Sanicball.Gameplay
 
             //Zooming
             cameraDistanceTarget = Mathf.Clamp(cameraDistanceTarget - (Input.GetAxis("Mouse ScrollWheel") * 2), 0, 10);
-            cameraDistance = Mathf.Lerp(cameraDistance, cameraDistanceTarget, Time.deltaTime * 4);
+            cameraDistance = Mathf.Lerp(cameraDistance, cameraDistanceTarget, (1.0f / 60.0f) * 4);
             //Moving to the target
             transform.position = Target.transform.position;
             //Positioning the camera
@@ -130,7 +121,7 @@ namespace Sanicball.Gameplay
             attachedCamera.transform.position = transform.TransformPoint(targetPoint);
 
             //Set camera FOV to get higher with more velocity
-            AttachedCamera.fieldOfView = Mathf.Lerp(AttachedCamera.fieldOfView, Mathf.Min(60f + (Target.velocity.magnitude), 100f), Time.deltaTime * 4);
+            AttachedCamera.fieldOfView = Mathf.Lerp(AttachedCamera.fieldOfView, Mathf.Min(60f + (Target.velocity.magnitude), 100f), (1.0f / 60.0f) * 4);
         }
 
         private void OnDestroy()

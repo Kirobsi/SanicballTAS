@@ -60,7 +60,7 @@ namespace Sanicball.Gameplay
             }
 
             //Rotate
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * (1.0f / 60.0f));
         }
     }
 }

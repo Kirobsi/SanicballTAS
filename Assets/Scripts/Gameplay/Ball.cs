@@ -179,13 +179,6 @@ namespace Sanicball.Gameplay
             speedFire = Instantiate(prefabs.SpeedFire);
             speedFire.Init(this);
 
-            //Crimbus
-            DateTime now = DateTime.Now;
-            if (now.Month == 12 && now.Day > 20 && now.Day <= 31)
-            {
-                hatPrefab = ActiveData.ChristmasHat;
-            }
-
             if (ActiveData.GameSettings.eSportsReady)
             {
                 hatPrefab = ActiveData.ESportsHat;
@@ -345,7 +338,7 @@ namespace Sanicball.Gameplay
             //Grounded timer
             if (groundedTimer > 0)
             {
-                groundedTimer -= Time.deltaTime;
+                groundedTimer -= (1.0f / 60.0f);
                 if (groundedTimer <= 0)
                 {
                     grounded = false;
@@ -357,11 +350,11 @@ namespace Sanicball.Gameplay
             {
                 if (upResetTimer > 0)
                 {
-                    upResetTimer -= Time.deltaTime;
+                    upResetTimer -= (1.0f / 60.0f);
                 }
                 else
                 {
-                    Up = Vector3.MoveTowards(Up, Vector3.up, Time.deltaTime * 10);
+                    Up = Vector3.MoveTowards(Up, Vector3.up, (1.0f / 60.0f) * 10);
                 }
             }
 

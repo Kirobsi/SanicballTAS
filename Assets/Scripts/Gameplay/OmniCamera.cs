@@ -66,7 +66,7 @@ namespace Sanicball.Gameplay
                 {
                     targetUp = bc.Up;
                 }
-                up = Vector3.Lerp(up, targetUp, Time.deltaTime * 100);
+                up = Vector3.Lerp(up, targetUp, (1.0f / 60.0f) * 100);
 
                 //Based on how fast the target is moving, create a rotation bending towards its velocity.
                 Quaternion towardsVelocity = (Target.velocity != Vector3.zero) ? Quaternion.LookRotation(Target.velocity, up) : Quaternion.identity;
@@ -74,7 +74,7 @@ namespace Sanicball.Gameplay
                 Quaternion finalTargetDir = Quaternion.Slerp(currentDirection, towardsVelocity, Mathf.Max(0, Mathf.Min(-10 + Target.velocity.magnitude, maxTrans) / maxTrans));
 
                 //Lerp towards the final rotation
-                currentDirection = Quaternion.Slerp(currentDirection, finalTargetDir, Time.deltaTime * 4);
+                currentDirection = Quaternion.Slerp(currentDirection, finalTargetDir, (1.0f / 60.0f) * 4);
 
                 //Look for a BallControlInput and set its look direction
                 BallControlInput bci = Target.GetComponent<BallControlInput>();
@@ -84,9 +84,9 @@ namespace Sanicball.Gameplay
                 }
 
                 //Set camera FOV to get higher with more velocity
-                AttachedCamera.fieldOfView = Mathf.Lerp(AttachedCamera.fieldOfView, Mathf.Min(60f + (Target.velocity.magnitude), 100f) + fovOffset, Time.deltaTime * 20);
+                AttachedCamera.fieldOfView = Mathf.Lerp(AttachedCamera.fieldOfView, Mathf.Min(60f + (Target.velocity.magnitude), 100f) + fovOffset, (1.0f / 60.0f) * 20);
 
-                currentDirectionWithOffset = Quaternion.Slerp(currentDirectionWithOffset, currentDirection * targetDirectionOffset, Time.deltaTime * 6);
+                currentDirectionWithOffset = Quaternion.Slerp(currentDirectionWithOffset, currentDirection * targetDirectionOffset, (1.0f / 60.0f) * 6);
                 transform.position = Target.transform.position + Vector3.up * orbitHeight + currentDirectionWithOffset * (Vector3.back * orbitDistance);
                 transform.rotation = currentDirectionWithOffset;
             }

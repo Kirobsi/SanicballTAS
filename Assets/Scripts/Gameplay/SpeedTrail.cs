@@ -24,7 +24,7 @@ namespace Sanicball.Gameplay
             tr.time = Mathf.Clamp(spd / 20, 0, 5);
             tr.startWidth = Mathf.Clamp(spd / 80, 0, 0.8f);
             tr.material.mainTextureScale = new Vector2(tr.time * 100, 1);
-            tr.material.mainTextureOffset = new Vector2((tr.material.mainTextureOffset.x - 2 * Time.deltaTime) % 1, 0);
+            tr.material.mainTextureOffset = new Vector2((tr.material.mainTextureOffset.x - 2 * (1.0f / 60.0f)) % 1, 0);
         }
     }
 }

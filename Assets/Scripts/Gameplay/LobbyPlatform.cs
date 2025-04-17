@@ -25,7 +25,7 @@ namespace Sanicball.Gameplay
         {
             if (currentPos > 0f)
             {
-                currentPos = Mathf.Max(currentPos - (Time.deltaTime / moveTime), 0);
+                currentPos = Mathf.Max(currentPos - ((1.0f / 60.0f) / moveTime), 0);
             }
             var smoothPos = Mathf.SmoothStep(0f, 1f, currentPos);
             transform.position = basePos + new Vector3(0, -moveDistance * smoothPos, 0);
