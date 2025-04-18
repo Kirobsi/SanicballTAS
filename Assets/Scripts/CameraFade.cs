@@ -5,28 +5,28 @@ namespace Sanicball
 {
     public class CameraFade : MonoBehaviour
     {
-        public GUIStyle m_BackgroundStyle = new GUIStyle();
-
         // Style for background tiling
-        public Texture2D m_FadeTexture;
+		public GUIStyle m_BackgroundStyle = new GUIStyle();
 
         // 1x1 pixel texture used for fading
-        public Color m_CurrentScreenOverlayColor = new Color(0, 0, 0, 0);
+        public Texture2D m_FadeTexture;
 
         // default starting color: black and fully transparrent
-        public Color m_TargetScreenOverlayColor = new Color(0, 0, 0, 0);
+        public Color m_CurrentScreenOverlayColor = new Color(0, 0, 0, 0);
 
         // default target color: black and fully transparrent
-        public Color m_DeltaColor = new Color(0, 0, 0, 0);
+        public Color m_TargetScreenOverlayColor = new Color(0, 0, 0, 0);
 
         // the delta-color is basically the "speed / second" at which the current color should change
+        public Color m_DeltaColor = new Color(0, 0, 0, 0);
+
+		// make sure this texture is drawn on top of everything
         public int m_FadeGUIDepth = -1000;
 
         public float m_FadeDelay = 0;
 		
 		private static int frameCounterPriv = 0;
 
-        // make sure this texture is drawn on top of everything
         public Action m_OnFadeFinish = null;
 
         private static CameraFade mInstance = null;
@@ -202,7 +202,7 @@ namespace Sanicball
                 if (instance.m_CurrentScreenOverlayColor != instance.m_TargetScreenOverlayColor)
                 {
                     // If the difference between the current alpha and the desired alpha is smaller than delta-alpha * deltaTime, then we're pretty much done fading:
-                    if (Mathf.Abs(instance.m_CurrentScreenOverlayColor.a - instance.m_TargetScreenOverlayColor.a) < Mathf.Abs(instance.m_DeltaColor.a) * (1.0f / 60.0f))
+                    if (Mathf.Abs(instance.m_CurrentScreenOverlayColor.a - instance.m_TargetScreenOverlayColor.a) < Mathf.Abs(instance.m_DeltaColor.a) * (1.0f / 30.0f))
                     {
                         instance.m_CurrentScreenOverlayColor = instance.m_TargetScreenOverlayColor;
                         SetScreenOverlayColor(instance.m_CurrentScreenOverlayColor);
@@ -216,7 +216,7 @@ namespace Sanicball
                     else
                     {
                         // Fade!
-                        SetScreenOverlayColor(instance.m_CurrentScreenOverlayColor + instance.m_DeltaColor * (1.0f / 60.0f));
+                        SetScreenOverlayColor(instance.m_CurrentScreenOverlayColor + instance.m_DeltaColor * (1.0f / 30.0f));
                     }
                 }
             }
